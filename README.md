@@ -3,7 +3,7 @@
 This is a step-by-step guideline to detect and retain test smells in the source code of test cases.
 
 ### Requirements
-- Eclipse IDE (the version we used was 2021-09)
+- Eclipse IDE (the version we used was 2021-12)
 - The libraries (the _.jar_ files in the `lib\` directory) 
 
 ### Input Files:
@@ -18,26 +18,23 @@ The `dataset/FlakeFlagger_filtered_dataset.csv` is just used to obtain the label
 * dataset/Flakify_dataset.csv
 
 ### Replicating the experiment
-To detect test smells and retain only code statements related to them, the `src/TestSmellsDetector.java` file should be compiled and run using the Eclipse IDE by having all the _.jar_ files in the class path. Each test case in the `dataset/test_cases_full_code/` directory is then parsed to generate a corresponding pre-processed Java file in the `dataset/test_cases_preprocessed_code/` directory. The original and pre-processed source code of all test cases are also saved in the `dataset/Flakify_dataset.csv` file, along with the projects they belong to as well as their labels.
+To detect test smells and retain only code statements that match them, the `src/TestSmellsDetector.java` file should be compiled and run using the Eclipse IDE by having all the _.jar_ files in the class path. Each test case in the `dataset/test_cases_full_code/` directory is then parsed to generate a corresponding pre-processed Java file in the `dataset/test_cases_preprocessed_code/` directory. The original and pre-processed source code of all test cases are also saved in the `dataset/Flakify_dataset.csv` file, along with the projects they belong to as well as their labels.
 
 ---
+## Python Environment
+Both Flakify and FlakeFlagger projects were tested on Python 3.8.5. The required Python dependencies can be installed via the following command:
 
+```bash
+pip install -r requirements.txt
+```
+---
 # Flakify Replication
 
-This is the guideline for replicating the experiments we used to evaluate Flakify for classifying test cases as flaky and non-flaky.
+This is the guideline for replicating the experiments used to evaluate Flakify for classifying test cases as flaky and non-flaky.
 
-### Requirements
-This is a list of all required python packages:
-- python =3.8.5
-- imbalanced_learn= 0.8.1
-- numpy= 1.19.5
-- pandas= 1.3.3
-- transformer= 4.10.2
-- torch=1.5.0
-- scikit_learn= 0.22.1
 
 ### Input File:
-This is a list of input files that are required to accomplish this step:
+This is the input file required to accomplish this step:
 * dataset/Flakify_dataset.csv
 This file contains the full code and pre-processed code of the test cases in the dataset, along with their ground truth labels (_flaky_ and _non-flaky_).
 
@@ -57,17 +54,10 @@ This will generate the classification results into `results/Flakify_results.csv`
 
 # FlakeFlagger Replication
 
-This is the guideline for replicating the experiments we used to evaluate the two versions of FlakeFlagger, white-box and black-box, for classifying test cases as flaky and non-flaky.
-
-### Requirements
-This is a list of all required python packages:
-- python =3.8.5
-- imbalanced_learn= 0.8.1
-- pandas= 1.3.3
-- scikit_learn= 0.22.1
+This is the guideline for replicating the experiments used to evaluate the two versions of FlakeFlagger, white-box and black-box, for classifying test cases as flaky and non-flaky.
 
 ### Input File:
-This is a list of input files that are required to accomplish this step:
+This is a list of input files required to accomplish this step:
 * dataset/FlakeFlagger_filtered_dataset.csv
 * dataset/FlakeFlaggerFeaturesTypes.csv
 * dataset/Information_gain_per_feature.csv
