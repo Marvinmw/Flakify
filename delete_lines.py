@@ -9,12 +9,15 @@ print(len(d))
 print(len(p["package_name"]))
 #assert "dataObject.getDataObjectDefinitionKey());" not in p["package_name"].tolist()
 for i in range(len(p)) :
-  try:
-    if p.loc[i, "package_name"]+"."+ p.loc[i, "class_name"]+"#"+p.loc[i, "test_name"] not in testset:
-        indexNames.append(i)
-  except:
-      pass
+    try:
+       # print( p.loc[i, "package_name"]+"."+ p.loc[i, "class_name"]+"#"+p.loc[i, "method_name"])
+        if p.loc[i, "package_name"]+"."+ p.loc[i, "class_name"]+"#"+p.loc[i, "method_name"] not in testset:
+            indexNames.append(i)
+    except:
+        pass
+ 
 # Delete these row indexes from dataFrame
+print(len(indexNames))
 p.drop(indexNames , inplace=True)
 p.to_csv("dataset/filtered_Flakify_dataset.csv", index=False)
 print(p["flaky"].sum())

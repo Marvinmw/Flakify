@@ -372,7 +372,7 @@ for train_index, test_index in skf.split(input_data, target_data):
     train_dataloader, val_dataloader = data_loaders(train_seq, train_mask, train_y, val_seq, val_mask, val_y)
 
     # compute the class weights
-    class_weights = compute_class_weight('balanced', np.unique(Y_train.values), y=np.ravel(Y_train.values))
+    class_weights = compute_class_weight('balanced', classes=np.unique(Y_train.values), y=np.ravel(Y_train.values))
     # converting list of class weights to a tensor
     weights = torch.tensor(class_weights, dtype=torch.float)
 
